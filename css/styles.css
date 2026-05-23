@@ -100,7 +100,63 @@ ul {
   }
 }
 
+/* ── Orbital ring wrapper ── */
+.loader-orbit-wrap {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* All SVG rings sit centered on top of each other */
+.loader-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Outer ring – slow clockwise */
+.loader-ring--outer {
+  animation: orbitCW 4s linear infinite;
+}
+
+/* Middle ring – fast counter-clockwise */
+.loader-ring--mid {
+  animation: orbitCCW 2.4s linear infinite;
+}
+
+/* Inner dotted ring – medium clockwise */
+.loader-ring--inner {
+  animation: orbitCW 6s linear infinite;
+}
+
+@keyframes orbitCW {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbitCCW {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* ── Logo circle (centrado dentro del orbit-wrap) ── */
 .loader-logo-circle {
+  position: relative;
+  z-index: 2;
   width: 90px;
   height: 90px;
   border-radius: 50%;
@@ -111,6 +167,7 @@ ul {
   box-shadow: 0 0 30px rgba(1, 151, 224, 0.45);
   animation: pulseLogo 1.8s ease-in-out infinite;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .loader-logo-circle img {
@@ -261,7 +318,7 @@ header.open-menu {
 
 .header-logo-text .tagline {
   font-size: 0.6rem;
-  color: var(--blue);
+  color: #e3e63a;
   letter-spacing: 2px;
   text-transform: uppercase;
 }
@@ -274,9 +331,9 @@ nav ul {
 
 nav a {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: var(--blue);
+  color: var(--white);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   transition: color var(--transition);
@@ -415,7 +472,7 @@ nav a.nav-active::after {
   flex-direction: column;
   padding: 20px 5% 30px;
   border-bottom: 2px solid var(--blue);
-  
+
   /* Animación premium de apertura */
   opacity: 0;
   transform: translateY(-15px);
@@ -548,9 +605,9 @@ nav a.nav-active::after {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(1, 151, 224, 0.15);
-  border: 1px solid rgba(1, 151, 224, 0.4);
-  color: var(--blue);
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  color: #ffffff;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
@@ -565,7 +622,7 @@ nav a.nav-active::after {
 .hero-badge span {
   width: 6px;
   height: 6px;
-  background: var(--blue);
+  background: #ffffff;
   border-radius: 50%;
   display: block;
 }
@@ -588,7 +645,12 @@ nav a.nav-active::after {
   font-family: 'Barlow', sans-serif;
   font-size: clamp(1rem, 2.2vw, 1.25rem);
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 14px 20px;
+  border-radius: 6px;
   max-width: 520px;
   line-height: 1.6;
   animation: heroFadeUp 0.8s 0.6s both;
@@ -1969,6 +2031,7 @@ footer::before {
     transform: scale(1);
     opacity: 0.6;
   }
+
   100% {
     transform: scale(1.8);
     opacity: 0;
@@ -2050,6 +2113,10 @@ footer::before {
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
+  .carousel-arrows {
+    display: none;
+  }
+
   .nosotros-grid {
     grid-template-columns: 1fr;
     gap: 50px;
@@ -2108,6 +2175,20 @@ footer::before {
 
   .hero-content {
     padding: 0 5% 80px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero-actions {
+    justify-content: center;
   }
 
   section {
