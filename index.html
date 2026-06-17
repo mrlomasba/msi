@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description"
     content="MSI – Mantenimiento y Servicios Industriales. Empresa especializada en mantenimiento preventivo y correctivo, pintura epóxica, soldadura, impermeabilización, plomería, servicios eléctricos y más en Monterrey, N.L." />
   <meta name="keywords"
@@ -40,10 +40,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=1" />
+  <link rel="stylesheet" href="css/styles.css?v=1.1" />
 </head>
 
-<body style="overflow:hidden;">
+<body>
 
   <!-- ============================================================
      LOADER
@@ -426,6 +426,7 @@
      POR QUÉ MSI
      ============================================================ -->
   <section id="porque">
+    <div class="porque-bg"></div>
     <div class="container">
       <div class="porque-grid">
 
@@ -578,9 +579,10 @@
         <!-- Video 1 -->
         <div class="video-card">
           <div class="video-wrapper">
-            <video preload="metadata" loop playsinline src="assets/videos/proyecto1.mp4" id="video-proj-1">
+            <video preload="metadata" loop playsinline poster="assets/imagenes/vid1.webp" src="assets/videos/proyecto1.mp4" id="video-proj-1">
               Tu navegador no soporta el formato de video.
             </video>
+            <div class="video-poster" style="background-image: url('assets/imagenes/vid1.webp');"></div>
             <!-- Play overlay -->
             <div class="video-overlay" onclick="togglePlayVideo('video-proj-1')">
               <div class="play-btn-circle">
@@ -602,9 +604,10 @@
         <!-- Video 2 -->
         <div class="video-card">
           <div class="video-wrapper">
-            <video preload="metadata" loop playsinline src="assets/videos/proyecto2.mp4" id="video-proj-2">
+            <video preload="metadata" loop playsinline poster="assets/imagenes/vid2.webp" src="assets/videos/proyecto2.mp4" id="video-proj-2">
               Tu navegador no soporta el formato de video.
             </video>
+            <div class="video-poster" style="background-image: url('assets/imagenes/vid2.webp');"></div>
             <!-- Play overlay -->
             <div class="video-overlay" onclick="togglePlayVideo('video-proj-2')">
               <div class="play-btn-circle">
@@ -934,7 +937,7 @@
 
 
   <!-- Scripts -->
-  <script src="main.js"></script>
+  <script src="main.js?v=1.1"></script>
 </body>
 
 </html>
