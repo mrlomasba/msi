@@ -1426,10 +1426,12 @@ section {
   opacity: 1;
   transition: opacity var(--transition);
   z-index: 2;
+  pointer-events: none;
 }
 
 .video-wrapper.playing .video-poster {
   opacity: 0;
+  pointer-events: none;
 }
 
 .video-wrapper video {
