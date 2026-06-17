@@ -335,9 +335,12 @@ window.togglePlayVideo = function(id) {
 };
 
 (function initVideoClicks() {
-  document.querySelectorAll('.video-wrapper video').forEach(video => {
-    // Directly click on video tag to pause
-    video.addEventListener('click', () => {
+  document.querySelectorAll('.video-wrapper video, .video-wrapper .video-overlay').forEach(el => {
+    el.addEventListener('click', event => {
+      const wrapper = event.currentTarget.closest('.video-wrapper');
+      if (!wrapper) return;
+      const video = wrapper.querySelector('video');
+      if (!video) return;
       window.togglePlayVideo(video.id);
     });
   });
