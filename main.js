@@ -60,6 +60,17 @@
       }
     });
   });
+
+  // Close mobile menu when resizing above mobile breakpoint
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      if (header) {
+        header.classList.remove('open-menu');
+      }
+    }
+  });
 })();
 
 
@@ -144,6 +155,26 @@
   }, { threshold: 0.15 });
 
   els.forEach(el => observer.observe(el));
+})();
+
+
+/* ── POR QUÉ MSI PARALLAX BACKGROUND ── */
+(function initPorqueParallax() {
+  const section = document.getElementById('porque');
+  const bg = section?.querySelector('.porque-bg');
+  if (!section || !bg) return;
+
+  const update = () => {
+    const rect = section.getBoundingClientRect();
+    if (rect.bottom > 0 && rect.top < window.innerHeight) {
+      const offset = Math.round(rect.top * 0.16);
+      bg.style.transform = `translateY(${offset}px)`;
+    }
+  };
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
 })();
 
 
