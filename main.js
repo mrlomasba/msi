@@ -5,25 +5,6 @@
 
 'use strict';
 
-/* ── LOADER ── */
-(function initLoader() {
-  const loader  = document.getElementById('loader');
-  const bar     = document.querySelector('.loader-bar');
-
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      loader.classList.add('hidden');
-      document.body.style.overflow = '';
-    }, 2400);
-  });
-
-  // Fallback: hide after 3.5s regardless
-  setTimeout(() => {
-    loader.classList.add('hidden');
-    document.body.style.overflow = '';
-  }, 3500);
-})();
-
 
 /* ── HEADER SCROLL ── */
 (function initHeader() {
@@ -345,4 +326,3 @@ window.togglePlayVideo = function(id) {
     });
   });
 })();
-
