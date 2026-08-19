@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -18,7 +19,6 @@
   <meta property="og:title" content="MSI | Mantenimiento y Servicios Industriales – Monterrey" />
   <meta property="og:description"
     content="Empresa especializada en mantenimiento preventivo y correctivo, pintura epóxica, soldadura y servicios industriales de la más alta calidad en Monterrey, N.L." />
-  <!-- NOTA IMPORTANTE: Redes sociales como WhatsApp y Facebook requieren de una URL absoluta para poder renderizar la imagen correctamente. Cuando subas tu sitio web a internet, debes cambiar el contenido de og:image e twitter:image por la URL absoluta (ej: https://tudominio.com/assets/imagenes/logo.png) -->
   <meta property="og:image" content="assets/imagenes/logo.webp" />
   <meta property="og:image:type" content="image/webp" />
   <meta property="og:image:width" content="1200" />
@@ -35,73 +35,22 @@
 
   <title>MSI | Mantenimiento y Servicios Industriales – Monterrey</title>
 
-  <!-- Preconnect fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Preload critical assets (above-the-fold) -->
+  <link rel="preload" href="assets/imagenes/hero1.webp" as="image" />
+  <link rel="preload" href="assets/imagenes/hero4.webp" as="image" />
+  <link rel="preload" href="fonts/bebas-neue-latin-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/barlow-latin-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/barlow-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="fonts/barlow-condensed-latin-400.woff2" as="font" type="font/woff2" crossorigin />
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css?v=1.2" />
+
+  <!-- Defer non-critical JS -->
+  <script src="main.js?v=1.2" defer></script>
 </head>
 
 <body>
-
-  <!-- ============================================================
-     LOADER
-     ============================================================ -->
-  <div id="loader">
-    <div class="loader-logo-wrap">
-
-      <!-- Orbital rings wrapper -->
-      <div class="loader-orbit-wrap">
-
-        <!-- Outer ring (slow clockwise) -->
-        <svg class="loader-ring loader-ring--outer" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="100" cy="100" r="92" fill="none" stroke="rgba(1,151,224,0.18)" stroke-width="1.5" />
-          <circle cx="100" cy="100" r="92" fill="none" stroke="url(#grad-outer)" stroke-width="2.5"
-            stroke-dasharray="60 520" stroke-linecap="round" />
-          <defs>
-            <linearGradient id="grad-outer" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#0197e0" stop-opacity="0" />
-              <stop offset="100%" stop-color="#0197e0" stop-opacity="1" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        <!-- Middle ring (fast counter-clockwise) -->
-        <svg class="loader-ring loader-ring--mid" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="100" cy="100" r="76" fill="none" stroke="rgba(1,151,224,0.12)" stroke-width="1" />
-          <circle cx="100" cy="100" r="76" fill="none" stroke="url(#grad-mid)" stroke-width="3"
-            stroke-dasharray="40 440" stroke-linecap="round" />
-          <defs>
-            <linearGradient id="grad-mid" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#00d4ff" stop-opacity="0" />
-              <stop offset="100%" stop-color="#00d4ff" stop-opacity="0.9" />
-            </linearGradient>
-          </defs>
-        </svg>
-
-        <!-- Inner ring (medium clockwise, dots style) -->
-        <svg class="loader-ring loader-ring--inner" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="100" cy="100" r="60" fill="none" stroke="rgba(1,151,224,0.25)" stroke-width="1"
-            stroke-dasharray="4 12" stroke-linecap="round" />
-        </svg>
-
-        <!-- Logo circle -->
-        <div class="loader-logo-circle">
-          <!-- Replace src with your actual logo: assets/imagenes/logo.png -->
-          <img src="assets/imagenes/logo.webp" alt="MSI Logo"
-            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-          <span class="logo-placeholder" style="display:none;">MSI</span>
-        </div>
-
-      </div><!-- /.loader-orbit-wrap -->
-
-      <div class="loader-sub">Mantenimiento y Servicios Industriales</div>
-      <div class="loader-bar-wrap">
-        <div class="loader-bar"></div>
-      </div>
-    </div>
-  </div>
 
 
   <!-- ============================================================
@@ -110,8 +59,7 @@
   <header>
     <a href="#hero" class="header-logo">
       <div class="header-logo-img">
-        <!-- Replace with your actual logo: assets/imagenes/logo.png -->
-        <img src="assets/imagenes/logo.webp" alt="MSI Logo"
+        <img src="assets/imagenes/logo.webp" alt="MSI Logo" width="48" height="48"
           onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
         <span class="logo-placeholder" style="display:none;">MSI</span>
       </div>
@@ -202,7 +150,7 @@
       </div>
 
       <!-- Scroll hint -->
-      <div class="scroll-hint">Scroll</div>
+      <div class="scroll-hint">Desliza</div>
     </div>
   </section>
 
@@ -218,7 +166,7 @@
         <div class="nosotros-img-wrap reveal">
           <div class="nosotros-img-placeholder">
             <!-- Replace with: <img src="assets/imagenes/nosotros.jpg" alt="Equipo MSI" /> -->
-            <img src="assets/imagenes/nosotros.png" alt="Equipo MSI"
+            <img src="assets/imagenes/nosotros.webp" alt="Equipo MSI" loading="lazy"
               onerror="this.parentElement.innerHTML='<div style=\'color:rgba(10,22,40,0.4);font-family:Barlow Condensed,sans-serif;font-size:0.8rem;letter-spacing:2px;text-align:center;padding:20px;border:2px dashed rgba(10,22,40,0.15);border-radius:4px;\'>📷<br>Coloca tu imagen aquí<br><small>assets/imagenes/nosotros.jpg</small></div>'" />
           </div>
           <div class="nosotros-img-badge">
@@ -526,34 +474,32 @@
       <div class="empresas-grid reveal" data-delay="100">
         <!-- Empresa 1 -->
         <div class="empresa-logo-item">
-          <img src="assets/imagenes/cliente1.png" alt="Empresa Aliada"
+          <img src="assets/imagenes/cliente1.webp" alt="Empresa Aliada" loading="lazy"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
           <div class="empresa-placeholder" style="display:none;">
             <span class="empresa-placeholder-icon">🏢</span>
             <span>Espacio para logo 1</span>
-            <small>cliente1.png</small>
+
           </div>
         </div>
 
         <!-- Empresa 2 -->
         <div class="empresa-logo-item">
-          <img src="assets/imagenes/cliente2.png" alt="Empresa Aliada"
+          <img src="assets/imagenes/cliente2.webp" alt="Empresa Aliada" loading="lazy"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
           <div class="empresa-placeholder" style="display:none;">
             <span class="empresa-placeholder-icon">🏢</span>
             <span>Espacio para logo 2</span>
-            <small>cliente2.png</small>
           </div>
         </div>
 
         <!-- Empresa 3 -->
         <div class="empresa-logo-item">
-          <img src="assets/imagenes/cliente3.png" alt="Empresa Aliada"
+          <img src="assets/imagenes/cliente3.webp" alt="Empresa Aliada" loading="lazy"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
           <div class="empresa-placeholder" style="display:none;">
             <span class="empresa-placeholder-icon">🏢</span>
             <span>Espacio para logo 3</span>
-            <small>cliente3.png</small>
           </div>
         </div>
       </div>
@@ -833,7 +779,7 @@
         <!-- Brand -->
         <div class="footer-brand">
           <div class="footer-logo-wrap">
-            <img src="assets/imagenes/logv.png" class="footer-logo" alt="MSI Logo" />
+            <img src="assets/imagenes/logv.webp" class="footer-logo" alt="MSI Logo" loading="lazy" />
             <div>
               <div class="footer-brand-sub">Mantenimiento y Servicios Industriales</div>
             </div>
@@ -936,8 +882,6 @@
   </a>
 
 
-  <!-- Scripts -->
-  <script src="main.js?v=1.2"></script>
 </body>
 
 </html>
