@@ -3,7 +3,150 @@
    styles.css
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;900&family=Barlow+Condensed:wght@400;600;700&display=swap');
+/* ── Fuentes locales (self-hosted) ── */
+@font-face {
+  font-family: 'Bebas Neue';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/bebas-neue-latin-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/barlow-latin-300.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/barlow-latin-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../fonts/barlow-latin-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/barlow-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/barlow-latin-700.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('../fonts/barlow-latin-900.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/barlow-condensed-latin-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/barlow-condensed-latin-600.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/barlow-condensed-latin-700.woff2') format('woff2');
+}
+
+/* ── Mobile CWV Optimizations ── */
+@media (max-width: 768px) {
+  /* Reduce hero height to prevent CLS on mobile */
+  #hero {
+    min-height: max(500px, calc(100svh - 72px));
+  }
+
+  /* GPU-accelerate carousel transitions */
+  .slide {
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* Prevent layout shift from carousel */
+  .carousel-slides {
+    contain: layout style;
+  }
+
+  /* Optimize reveal animations for mobile */
+  .reveal {
+    transition-duration: 0.5s;
+    will-change: opacity, transform;
+  }
+
+  /* Content visibility for below-the-fold sections */
+  #nosotros, #servicios, #porque, #empresas, #videos, #portafolio, #contacto {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 800px;
+  }
+
+  /* Ensure minimum touch target size (48px) */
+  .carousel-dot {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  .carousel-dot::before {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* Optimize video cards for mobile */
+  .video-card {
+    contain: layout style;
+  }
+
+  /* Prevent CLS from service cards */
+  .service-card {
+    contain: layout style;
+  }
+
+  /* Optimize contact form for mobile */
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-size: 16px !important; /* Prevent zoom on iOS */
+  }
+}
 
 /* ── Variables ── */
 :root {
@@ -58,189 +201,6 @@ a {
 
 ul {
   list-style: none;
-}
-
-/* ============================================
-   LOADER
-   ============================================ */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: var(--dark);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
-}
-
-#loader.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.loader-logo-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  animation: loaderFadeIn 0.8s ease forwards;
-}
-
-@keyframes loaderFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ── Orbital ring wrapper ── */
-.loader-orbit-wrap {
-  position: relative;
-  width: 200px;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* All SVG rings sit centered on top of each other */
-.loader-ring {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Outer ring – slow clockwise */
-.loader-ring--outer {
-  animation: orbitCW 4s linear infinite;
-}
-
-/* Middle ring – fast counter-clockwise */
-.loader-ring--mid {
-  animation: orbitCCW 2.4s linear infinite;
-}
-
-/* Inner dotted ring – medium clockwise */
-.loader-ring--inner {
-  animation: orbitCW 6s linear infinite;
-}
-
-@keyframes orbitCW {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes orbitCCW {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(-360deg);
-  }
-}
-
-/* ── Logo circle (centrado dentro del orbit-wrap) ── */
-.loader-logo-circle {
-  position: relative;
-  z-index: 2;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: var(--blue);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 30px rgba(1, 151, 224, 0.45);
-  animation: pulseLogo 1.8s ease-in-out infinite;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.loader-logo-circle img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.loader-logo-circle .loader-initials {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.4rem;
-  color: var(--white);
-  letter-spacing: 4px;
-}
-
-@keyframes pulseLogo {
-
-  0%,
-  100% {
-    box-shadow: 0 0 30px rgba(1, 151, 224, 0.4);
-  }
-
-  50% {
-    box-shadow: 0 0 60px rgba(1, 151, 224, 0.9);
-  }
-}
-
-.loader-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.6rem;
-  color: var(--white);
-  letter-spacing: 6px;
-  text-align: center;
-}
-
-.loader-sub {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.85rem;
-  color: var(--blue);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.loader-bar-wrap {
-  width: 200px;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 99px;
-  overflow: hidden;
-  margin-top: 10px;
-}
-
-.loader-bar {
-  height: 100%;
-  width: 0%;
-  background: var(--blue);
-  border-radius: 99px;
-  animation: loadBar 2.2s ease forwards;
-}
-
-@keyframes loadBar {
-  0% {
-    width: 0%;
-  }
-
-  60% {
-    width: 75%;
-  }
-
-  100% {
-    width: 100%;
-  }
 }
 
 /* ============================================
@@ -561,37 +521,37 @@ nav a.nav-active::after {
 /* Placeholder backgrounds for slides without images */
 .slide:nth-child(1) {
   background-color: #0a1628;
-  background-image: url('../assets/imagenes/hero1.png');
+  background-image: url('../assets/imagenes/hero1.webp');
 }
 
 .slide:nth-child(2) {
   background-color: #0f2040;
-  background-image: url('../assets/imagenes/hero2.png');
+  background-image: url('../assets/imagenes/hero2.webp');
 }
 
 .slide:nth-child(3) {
   background-color: #082035;
-  background-image: url('../assets/imagenes/hero3.png');
+  background-image: url('../assets/imagenes/hero3.webp');
 }
 
 .slide:nth-child(4) {
   background-color: #0d1f3c;
-  background-image: url('../assets/imagenes/hero4.png');
+  background-image: url('../assets/imagenes/hero4.webp');
 }
 
 .slide:nth-child(5) {
   background-color: #091a2e;
-  background-image: url('../assets/imagenes/hero5.png');
+  background-image: url('../assets/imagenes/hero5.webp');
 }
 
 .slide:nth-child(6) {
   background-color: #0a1f38;
-  background-image: url('../assets/imagenes/hero6.png');
+  background-image: url('../assets/imagenes/hero6.webp');
 }
 
 .slide:nth-child(7) {
   background-color: #0c1d35;
-  background-image: url('../assets/imagenes/hero7.png');
+  background-image: url('../assets/imagenes/hero7.webp');
 }
 
 .hero-content {
@@ -1157,7 +1117,7 @@ section {
   right: 0;
   top: -20%;
   bottom: -20%;
-  background-image: url('../assets/imagenes/hero4.png');
+  background-image: url('../assets/imagenes/hero4.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
